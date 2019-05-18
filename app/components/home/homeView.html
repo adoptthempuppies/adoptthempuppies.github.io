@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row litter" ng-repeat="litter in vm.litters">
+        <div class="col-xs-12">
+            <h2><b ng-bind="::litter.name"></b></h2>
+        </div>
+        <div class="col-xs-12" ng-if="litter.type == 'LITTER'">
+            <div class="col-xs-6 col-md-4" ng-repeat="card in litter.cards">
+                <a ng-href="#/puppy/{{::card.id}}/{{::card.slug}}/" class="puppy-link">
+                    <div class="puppy" id="{{::card.slug}}" ng-class="{'jello animate':(0 == $index)}">
+                        <div class="puppy-image">
+                            <img ng-src="{{::card.image}}" alt="{{::card.name}}" class="img-responsive">
+                            <div class="stamp" ng-bind="::label.name" ng-repeat="label in card.labels | filter:{'name':'ADOPTED'}"></div>  
+                        </div>
+                        <div class="puppy-details">
+                            <h3 ng-bind="::card.name"></h3>
+                            <div class="puppy-desc" ng-bind="::card.desc">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="col-xs-12" ng-if="litter.type == 'MARKDOWN'">
+            <div ng-repeat="block in litter.blocks" ng-class="block.name" marked="block.desc"></div>
+            <div class="clearfix"></div>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2><b>About Us</b></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="puppy no-margin">
+                <div class="puppy-image">
+                    <img src="https://cdn.gomix.com/20fda01e-0142-4987-99d7-b8d4ec6ff971%2Faboutus.jpg" alt="Peggy" class="img-responsive">
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-8" style="font-size:22px;">
+            <p>
+                AdoptThemPuppies is a way for us to bring to you puppies from different litters in need of adoption.
+            </p>
+            <p>
+                A dog is an addition to the family and adoption is a whole hearted commitment. This site shows you who the next member of your family might be!
+            </p>
+            <p>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://adoptthempuppies.in/" target="_blank">
+                    <span class="fa fa-facebook-square"></span> Share on Facebook
+                </a>
+                <br>
+                <a href="https://twitter.com/home?status=Check%20out%20Peggy's%20litter%20on%20AdoptThemPuppies%20and%20help%20one%20of%20these%20babies%20find%20a%20forever%20home.%0A%40adoptthempups%0Ahttps%3A//goo.gl/GdcsuP" target="_blank">
+                    <span class="fa fa-twitter"></span> Share on Twitter
+                </a>
+                <br>
+                <a href="mailto:adoptthempuppies@gmail.com?subject=Feedback adoptthempuppies.in" target="_blank">
+                    <span class="fa fa-envelope"></span> Mail Us
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
